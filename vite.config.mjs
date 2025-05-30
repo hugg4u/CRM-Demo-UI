@@ -13,7 +13,8 @@ export default defineConfig(({ mode }) => {
       open: true,
       // this sets a default port to 3000
       port: PORT,
-      host: true
+      host: true,
+      allowedHosts: ['3000--main--hungpc--hung.coder1.hirogo-dev.com']
     },
     preview: {
       open: true,

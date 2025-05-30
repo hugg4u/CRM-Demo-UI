@@ -15,6 +15,24 @@ const Shadow = Loadable(lazy(() => import('pages/component-overview/shadows')));
 // render - sample page
 const SamplePage = Loadable(lazy(() => import('pages/extra-pages/sample-page')));
 
+// render - property pages
+const PropertyCreate = Loadable(lazy(() => import('pages/property/PropertyCreate')));
+const PropertyList = Loadable(lazy(() => import('pages/property/PropertyList')));
+
+// render - customer pages
+const CustomerCreate = Loadable(lazy(() => import('pages/customer/CustomerCreate')));
+const CustomerList = Loadable(lazy(() => import('pages/customer/CustomerList')));
+
+// render - notification pages
+const NotificationCreate = Loadable(lazy(() => import('pages/notification/NotificationCreate')));
+const NotificationList = Loadable(lazy(() => import('pages/notification/NotificationList')));
+// render - appointment pages
+const AppointmentCreate = Loadable(lazy(() => import('pages/appointment/AppointmentCreate')));
+const AppointmentList = Loadable(lazy(() => import('pages/appointment/AppointmentList')));
+// render - transaction pages
+const TransactionCreate = Loadable(lazy(() => import('pages/transaction/TransactionCreate')));
+const TransactionList = Loadable(lazy(() => import('pages/transaction/TransactionList')));
+
 // ==============================|| MAIN ROUTING ||============================== //
 
 const MainRoutes = {
@@ -26,29 +44,85 @@ const MainRoutes = {
       element: <DashboardDefault />
     },
     {
-      path: 'dashboard',
+      path: 'property',
       children: [
         {
-          path: 'default',
-          element: <DashboardDefault />
+          path: 'create',
+          element: <PropertyCreate />
+        },
+        {
+          path: 'list',
+          element: <PropertyList />
+        },
+        {
+          path: 'map',
+          element: <PropertyList />
+        },
+        {
+          path: 'stop',
+          element: <PropertyList />
+        },
+        {
+          path: 'hide',
+          element: <PropertyList />
+        },
+        {
+          path: 'check',
+          element: <PropertyList />
         }
       ]
     },
     {
-      path: 'typography',
-      element: <Typography />
+      path: 'customer',
+      children: [
+        {
+          path: 'create',
+          element: <CustomerCreate />
+        },
+        {
+          path: 'list',
+          element: <CustomerList />
+        }
+      ]
     },
     {
-      path: 'color',
-      element: <Color />
+      path: 'notification',
+      children: [
+        {
+          path: 'create',
+          element: <NotificationCreate />
+        },
+        {
+          path: 'list',
+          element: <NotificationList />
+        }
+      ]
     },
     {
-      path: 'shadow',
-      element: <Shadow />
+      path: 'appointment',
+      children: [
+        {
+          path: 'create',
+          element: <AppointmentCreate />
+        },
+        {
+          path: 'list',
+          element: <AppointmentList />
+        }
+      ]
     },
     {
-      path: 'sample-page',
-      element: <SamplePage />
+      path: 'transaction',
+      children: [
+        {
+          path: 'create',
+          element: <TransactionCreate />
+        },
+        {
+          path: 'list',
+          element: <TransactionList />
+        }
+      ]
     }
   ]
 };
