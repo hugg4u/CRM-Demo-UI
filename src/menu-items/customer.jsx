@@ -11,7 +11,7 @@ const icons = {
 const customer = {
   id: 'group-customer',
   title: 'Quản lý khách hàng',
-  type: 'group',
+  type: 'collapse',
   children: [
     {
       id: 'customer-create',

@@ -383,39 +383,6 @@ const PropertyCreate = () => {
                   </Grid>
                 </Grid>
 
-                {/* Giới tính */}
-                <Grid container spacing={3} alignItems="center">
-                  <Grid item xs={12} md={3}>
-                    <FormLabel sx={{ fontWeight: 500 }}>Giới tính</FormLabel>
-                  </Grid>
-                  <Grid item xs={12} md={9}>
-                    <RadioGroup row value={formData.gender} onChange={handleInputChange('gender')} sx={{ gap: 2 }}>
-                      <FormControlLabel value="male" control={<Radio />} label="Nam" />
-                      <FormControlLabel value="female" control={<Radio />} label="Nữ" />
-                    </RadioGroup>
-                  </Grid>
-                </Grid>
-
-                {/* SĐT */}
-                <Grid container spacing={3} alignItems="center">
-                  <Grid item xs={12} md={3}>
-                    <FormLabel sx={{ fontWeight: 500 }}>Số điện thoại</FormLabel>
-                  </Grid>
-                  <Grid item xs={12} md={9}>
-                    <TextField fullWidth value={formData.phone} onChange={handleInputChange('phone')} />
-                  </Grid>
-                </Grid>
-
-                {/* Ghi chú mạng xã hội */}
-                <Grid container spacing={3} alignItems="center">
-                  <Grid item xs={12} md={3}>
-                    <FormLabel sx={{ fontWeight: 500 }}>Ghi chú mạng xã hội</FormLabel>
-                  </Grid>
-                  <Grid item xs={12} md={12} width="100%">
-                    <TextField fullWidth multiline rows={3} value={formData.socialNote} onChange={handleInputChange('socialNote')} />
-                  </Grid>
-                </Grid>
-
                 {/* Địa chỉ */}
                 <Grid container spacing={3} alignItems="center">
                   <Grid item xs={12} md={3}>
@@ -533,35 +500,38 @@ const PropertyCreate = () => {
                 </Grid>
               </Grid>
 
-              <MainCard title="Thông tin diện tích" className="space-y-4">
-                <Grid container spacing={3} alignItems="center">
-                  <Grid item xs={12} md={6}>
-                    <TextField
-                      fullWidth
-                      label="Số phòng ngủ"
-                      type="number"
-                      value={formData.bedrooms}
-                      onChange={handleInputChange('bedrooms')}
-                    />
-                  </Grid>
-                  <Grid item xs={12} md={6}>
-                    <FormControl fullWidth className="w-full" width="100%">
-                      <InputLabel component="legend">Hướng</InputLabel>
-                      <Select
-                        value={formData.direction}
-                        onChange={handleInputChange('direction')}
-                        label="Hướng"
-                        className="w-full"
-                        sx={{ width: '100%' }}
-                      >
-                        {mockData.directions.map((direction) => (
-                          <MenuItem key={direction.id} value={direction.id.toString()}>
-                            {direction.name}
-                          </MenuItem>
-                        ))}
-                      </Select>
-                    </FormControl>
-                  </Grid>
+              <Grid container spacing={3} alignItems="center" width="100%">
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    fullWidth
+                    label="Số phòng ngủ"
+                    type="number"
+                    value={formData.bedrooms}
+                    onChange={handleInputChange('bedrooms')}
+                  />
+                </Grid>
+                <Grid item xs={12} md={6} width={100}>
+                  <FormControl fullWidth className="w-full">
+                    <InputLabel component="legend">Hướng</InputLabel>
+                    <Select
+                      value={formData.direction}
+                      onChange={handleInputChange('direction')}
+                      label="Hướng"
+                      className="w-full"
+                      sx={{ width: '100%' }}
+                    >
+                      {mockData.directions.map((direction) => (
+                        <MenuItem key={direction.id} value={direction.id.toString()}>
+                          {direction.name}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12} md={6} width="100%" display="flex" alignItems="center" flexDirection="row" gap={2}>
+                  <FormLabel component="legend" className="font-medium mb-2">
+                    Thời hạn thuê
+                  </FormLabel>
                   <Grid item xs={12} md={6}>
                     <DatePicker
                       label="Từ ngày"
@@ -589,7 +559,7 @@ const PropertyCreate = () => {
                     />
                   </Grid>
                 </Grid>
-              </MainCard>
+              </Grid>
 
               <Grid container spacing={3} alignItems="center">
                 {/* Đặc điểm nhà đất */}

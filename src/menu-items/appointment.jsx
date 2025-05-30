@@ -11,7 +11,7 @@ const icons = {
 const appointment = {
   id: 'group-appointment',
   title: 'Quản lý lịch hẹn',
-  type: 'group',
+  type: 'collapse',
   children: [
     {
       id: 'appointment-create',

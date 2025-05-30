@@ -11,7 +11,7 @@ const icons = {
 const transaction = {
   id: 'group-transaction',
   title: 'Quản lý giao dịch',
-  type: 'group',
+  type: 'collapse',
   children: [
     {
       id: 'transaction-create',

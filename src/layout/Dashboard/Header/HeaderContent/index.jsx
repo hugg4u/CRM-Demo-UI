@@ -19,10 +19,10 @@ export default function HeaderContent() {
   const downLG = useMediaQuery((theme) => theme.breakpoints.down('lg'));
 
   return (
-    <>
-      {!downLG && <Search />}
+    <div style={{ display: 'flex', width: '100%', justifyContent: 'flex-end' }}>
+      {/* {!downLG && <Search />} */}
       {downLG && <Box sx={{ width: '100%', ml: 1 }} />}
-      <IconButton
+      {/* <IconButton
         component={Link}
         href="https://github.com/codedthemes/mantis-free-react-admin-template"
         target="_blank"
@@ -32,11 +32,13 @@ export default function HeaderContent() {
         sx={{ color: 'text.primary', bgcolor: 'grey.100' }}
       >
         <GithubOutlined />
-      </IconButton>
+      </IconButton> */}
 
-      <Notification />
-      {!downLG && <Profile />}
-      {downLG && <MobileSection />}
-    </>
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+        <Notification />
+        {!downLG && <Profile />}
+        {downLG && <MobileSection />}
+      </div>
+    </div>
   );
 }

@@ -11,7 +11,7 @@ const icons = {
 const transaction = {
   id: 'group-notification',
   title: 'Quản lý thông báo',
-  type: 'group',
+  type: 'collapse',
   children: [
     {
       id: 'notification-create',

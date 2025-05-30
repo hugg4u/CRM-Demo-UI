@@ -10,6 +10,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import Tooltip from '@mui/material/Tooltip';
 
 // project imports
 import IconButton from 'components/@extended/IconButton';
@@ -107,7 +108,9 @@ export default function NavItem({ item, level, isParents = false, setSelectedID 
                   })
               })}
             >
-              {itemIcon}
+              <Tooltip title={item.title} placement="right">
+                {itemIcon}
+              </Tooltip>
             </ListItemIcon>
           )}
           {(drawerOpen || (!drawerOpen && level !== 1)) && (

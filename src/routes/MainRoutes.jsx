@@ -26,12 +26,18 @@ const CustomerList = Loadable(lazy(() => import('pages/customer/CustomerList')))
 // render - notification pages
 const NotificationCreate = Loadable(lazy(() => import('pages/notification/NotificationCreate')));
 const NotificationList = Loadable(lazy(() => import('pages/notification/NotificationList')));
+
 // render - appointment pages
 const AppointmentCreate = Loadable(lazy(() => import('pages/appointment/AppointmentCreate')));
 const AppointmentList = Loadable(lazy(() => import('pages/appointment/AppointmentList')));
+
 // render - transaction pages
 const TransactionCreate = Loadable(lazy(() => import('pages/transaction/TransactionCreate')));
 const TransactionList = Loadable(lazy(() => import('pages/transaction/TransactionList')));
+
+// render - permission pages
+const AccountCreate = Loadable(lazy(() => import('pages/permission/AccountCreate')));
+const EmployeeList = Loadable(lazy(() => import('pages/permission/EmployeeList')));
 
 // ==============================|| MAIN ROUTING ||============================== //
 
@@ -42,6 +48,15 @@ const MainRoutes = {
     {
       path: '/',
       element: <DashboardDefault />
+    },
+    {
+      path: 'dashboard',
+      children: [
+        {
+          path: 'default',
+          element: <DashboardDefault />
+        }
+      ]
     },
     {
       path: 'property',
@@ -123,6 +138,45 @@ const MainRoutes = {
           element: <TransactionList />
         }
       ]
+    },
+    {
+      path: 'permission',
+      children: [
+        {
+          path: 'account',
+          children: [
+            {
+              path: 'create',
+              element: <AccountCreate />
+            }
+          ]
+        },
+        {
+          path: 'employee',
+          children: [
+            {
+              path: 'list',
+              element: <EmployeeList />
+            }
+          ]
+        }
+      ]
+    },
+    {
+      path: 'color',
+      element: <Color />
+    },
+    {
+      path: 'sample-page',
+      element: <SamplePage />
+    },
+    {
+      path: 'shadow',
+      element: <Shadow />
+    },
+    {
+      path: 'typography',
+      element: <Typography />
     }
   ]
 };

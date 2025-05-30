@@ -11,7 +11,7 @@ const icons = {
 const adminProperty = {
   id: 'group-property',
   title: 'Quản lý bất động sản',
-  type: 'group',
+  type: 'collapse',
   children: [
     {
       id: 'property-create',
