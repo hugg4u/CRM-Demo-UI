@@ -14,6 +14,8 @@ import Tooltip from '@mui/material/Tooltip';
 
 // project imports
 import IconButton from 'components/@extended/IconButton';
+import useRole from 'hooks/useRole';
+import { addRoleToUrl } from 'utils/roleNavigation';
 
 import { handlerDrawerOpen, useGetMenuMaster } from 'api/menu';
 
@@ -22,6 +24,7 @@ import { handlerDrawerOpen, useGetMenuMaster } from 'api/menu';
 export default function NavItem({ item, level, isParents = false, setSelectedID }) {
   const { menuMaster } = useGetMenuMaster();
   const drawerOpen = menuMaster.isDashboardDrawerOpened;
+  const { role } = useRole();
 
   const downLG = useMediaQuery((theme) => theme.breakpoints.down('lg'));
 
@@ -56,12 +59,15 @@ export default function NavItem({ item, level, isParents = false, setSelectedID 
   const textColor = 'text.primary';
   const iconSelectedColor = 'primary.main';
 
+  // Add role to URL if needed
+  const urlWithRole = addRoleToUrl(item.url, role);
+
   return (
     <>
       <Box sx={{ position: 'relative' }}>
         <ListItemButton
           component={Link}
-          to={item.url}
+          to={urlWithRole}
           target={itemTarget}
           disabled={item.disabled}
           selected={isSelected}
@@ -148,7 +154,7 @@ export default function NavItem({ item, level, isParents = false, setSelectedID 
                 })}
                 {...(action.type === 'link' && {
                   component: Link,
-                  to: action.url,
+                  to: addRoleToUrl(action.url, role),
                   target: action.target ? '_blank' : '_self'
                 })}
                 color="secondary"

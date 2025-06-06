@@ -718,6 +718,13 @@ const PropertyCreate = () => {
               </Grid>
             </MainCard>
 
+            {/* Người tạo */}
+            <Grid container spacing={3} alignItems="center">
+              <Grid item xs={12} md={6}>
+                <TextField fullWidth label="Người tạo" value={formData.creator} onChange={handleInputChange('creator')} />
+              </Grid>
+            </Grid>
+
             {/* Buttons */}
             <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 2 }}>
               <Button variant="outlined" startIcon={<ClearIcon />} onClick={handleReset}>

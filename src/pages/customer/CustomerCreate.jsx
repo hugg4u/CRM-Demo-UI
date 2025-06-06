@@ -13,7 +13,12 @@ import {
   Button,
   Stack,
   Autocomplete,
-  IconButton
+  IconButton,
+  Checkbox,
+  FormGroup,
+  Select,
+  MenuItem,
+  InputLabel
 } from '@mui/material';
 import { Add as AddIcon, Delete as DeleteIcon } from '@mui/icons-material';
 import MainCard from 'components/MainCard';
@@ -128,6 +133,22 @@ const CustomerCreate = () => {
             <TextField required fullWidth label="Tên khách hàng" name="name" value={formData.name} onChange={handleChange} />
           </Grid>
 
+          {/* Giới tính */}
+          <Grid item xs={12} width="100%">
+            <FormControl component="fieldset">
+              <FormLabel component="legend">Giới tính</FormLabel>
+              <RadioGroup row name="gender" value={formData.gender} onChange={handleChange}>
+                <FormControlLabel value="male" control={<Radio />} label="Nam" />
+                <FormControlLabel value="female" control={<Radio />} label="Nữ" />
+              </RadioGroup>
+            </FormControl>
+          </Grid>
+
+          {/* Số điện thoại */}
+          <Grid item xs={12} width="100%">
+            <TextField required fullWidth label="Số điện thoại" name="phone" value={formData.phone} onChange={handleChange} />
+          </Grid>
+
           {/* Liên hệ */}
           <Grid item xs={12} width="100%">
             <TextField
@@ -139,6 +160,34 @@ const CustomerCreate = () => {
               value={formData.contact}
               onChange={handleChange}
             />
+          </Grid>
+
+          {/* Ghi chú mạng xã hội */}
+          <Grid item xs={12} width="100%">
+            <TextField
+              fullWidth
+              label="Ghi chú mạng xã hội"
+              name="socialMediaNote"
+              value={formData.socialMediaNote}
+              onChange={handleChange}
+            />
+          </Grid>
+
+          {/* Loại khách hàng */}
+          <Grid item xs={12} width="100%">
+            <FormControl component="fieldset">
+              <FormLabel component="legend">Loại khách hàng</FormLabel>
+              <RadioGroup row name="customerType" value={formData.customerType} onChange={handleChange}>
+                <FormControlLabel value="buy" control={<Radio />} label="Khách mua" />
+                <FormControlLabel value="rent" control={<Radio />} label="Khách thuê" />
+              </RadioGroup>
+            </FormControl>
+          </Grid>
+
+          {/* Chủ nhà */}
+          <Grid item xs={12} width="100%" sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+            <Typography variant="h6">Chủ nhà</Typography>
+            <FormControlLabel control={<Checkbox />} />
           </Grid>
 
           {/* Nhu cầu */}
@@ -156,7 +205,7 @@ const CustomerCreate = () => {
 
           {/* Tài chính */}
           <Grid item xs={12} md={6}>
-            <TextField fullWidth label="Tài chính" name="budget" value={formData.budget} onChange={handleChange} />
+            <TextField type="number" fullWidth label="Tài chính" name="budget" value={formData.budget} onChange={handleChange} />
           </Grid>
 
           {/* Thời hạn */}
@@ -173,7 +222,7 @@ const CustomerCreate = () => {
           </Grid>
 
           {/* Nguồn khách */}
-          <Grid item xs={12}>
+          <Grid item xs={12} width="100%">
             <TextField fullWidth label="Nguồn khách" name="source" value={formData.source} onChange={handleChange} />
           </Grid>
 
@@ -189,19 +238,6 @@ const CustomerCreate = () => {
             />
           </Grid>
 
-          {/* Phản hồi của khách */}
-          <Grid item xs={12} width="100%">
-            <TextField
-              fullWidth
-              label="Phản hồi của khách"
-              name="feedback"
-              multiline
-              rows={4}
-              value={formData.feedback}
-              onChange={handleChange}
-            />
-          </Grid>
-
           {/* Đánh giá khách */}
           <Grid item xs={12} width="100%">
             <TextField
@@ -213,11 +249,6 @@ const CustomerCreate = () => {
               value={formData.evaluation}
               onChange={handleChange}
             />
-          </Grid>
-
-          {/* Người tạo */}
-          <Grid item xs={12} width="100%">
-            <TextField required fullWidth label="Người tạo" name="creator" value={formData.creator} onChange={handleChange} />
           </Grid>
 
           {/* Trạng thái khách hàng */}
@@ -295,6 +326,26 @@ const CustomerCreate = () => {
                 </Button>
               </Grid>
             </Grid>
+          </Grid>
+
+          {/* Người tạo */}
+          <Grid item xs={12} width="100%">
+            <TextField required fullWidth label="Người tạo" name="creator" value={formData.creator} onChange={handleChange} />
+          </Grid>
+
+          {/* Chỉ định sale */}
+          <Grid item xs={12} width="100%">
+            <FormControl fullWidth>
+              <InputLabel>Chỉ định sale</InputLabel>
+              <Select label="Chỉ định sale" name="sale" value={formData.sale} onChange={handleChange}>
+                <MenuItem value="">
+                  <em>Không chọn</em>
+                </MenuItem>
+                <MenuItem value="Nguyễn Văn A">Nguyễn Văn A</MenuItem>
+                <MenuItem value="Nguyễn Văn B">Nguyễn Văn B</MenuItem>
+                <MenuItem value="Nguyễn Văn C">Nguyễn Văn C</MenuItem>
+              </Select>
+            </FormControl>
           </Grid>
 
           {/* Submit Button */}

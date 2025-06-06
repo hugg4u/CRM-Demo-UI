@@ -18,6 +18,7 @@ import {
   MenuItem
 } from '@mui/material';
 import MainCard from 'components/MainCard';
+import useRole from 'hooks/useRole';
 
 // Mock data for property suggestions
 const mockProperties = [
@@ -34,6 +35,7 @@ const mockCustomers = [
 ];
 
 const TransactionCreate = () => {
+  const { role, isSale, isAdmin } = useRole();
   const [formData, setFormData] = useState({
     propertyId: null,
     customerId: null,
@@ -139,6 +141,20 @@ const TransactionCreate = () => {
               value={formData.customerId}
               onChange={handleCustomerChange}
               renderInput={(params) => <TextField {...params} label="Khách hàng" required />}
+            />
+          </Grid>
+
+          {/* Nhân viên */}
+          <Grid item xs={12} width="100%">
+            <Autocomplete
+              fullWidth
+              options={mockCustomers}
+              getOptionLabel={(option) => option.name}
+              value={formData.customerId}
+              onChange={handleCustomerChange}
+              renderInput={(params) => <TextField {...params} label="Sale" required />}
+              disabled={!isAdmin}
+              defaultValue={isSale ? 'sale' : ''}
             />
           </Grid>
 

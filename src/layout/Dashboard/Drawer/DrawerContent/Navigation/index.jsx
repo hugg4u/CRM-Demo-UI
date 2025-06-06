@@ -6,11 +6,16 @@ import Box from '@mui/material/Box';
 import NavGroup from './NavGroup';
 import menuItem from 'menu-items';
 import NavCollapse from './NavCollapse';
+import useRole from 'hooks/useRole';
+import { getMenuByRole } from 'utils/menuFilter';
 
 // ==============================|| DRAWER CONTENT - NAVIGATION ||============================== //
 
 export default function Navigation() {
-  const navGroups = menuItem.items.map((item) => {
+  const { role } = useRole();
+  const filteredItems = getMenuByRole(menuItem.items, role);
+
+  const navGroups = filteredItems.map((item) => {
     switch (item.type) {
       case 'collapse':
         return <NavCollapse key={item.id} item={item} />;

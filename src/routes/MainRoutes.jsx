@@ -39,6 +39,12 @@ const TransactionList = Loadable(lazy(() => import('pages/transaction/Transactio
 const AccountCreate = Loadable(lazy(() => import('pages/permission/AccountCreate')));
 const EmployeeList = Loadable(lazy(() => import('pages/permission/EmployeeList')));
 
+// render - setting pages
+const PropertySettings = Loadable(lazy(() => import('pages/setting/PropertySettings')));
+const CustomerSettings = Loadable(lazy(() => import('pages/setting/CustomerSettings')));
+const TransactionSettings = Loadable(lazy(() => import('pages/setting/TransactionSettings')));
+const EmployeeSettings = Loadable(lazy(() => import('pages/setting/EmployeeSettings')));
+
 // ==============================|| MAIN ROUTING ||============================== //
 
 const MainRoutes = {
@@ -159,6 +165,27 @@ const MainRoutes = {
               element: <EmployeeList />
             }
           ]
+        }
+      ]
+    },
+    {
+      path: 'setting',
+      children: [
+        {
+          path: 'property',
+          element: <PropertySettings />
+        },
+        {
+          path: 'customer',
+          element: <CustomerSettings />
+        },
+        {
+          path: 'transaction',
+          element: <TransactionSettings />
+        },
+        {
+          path: 'employee',
+          element: <EmployeeSettings />
         }
       ]
     },

@@ -152,6 +152,11 @@ const AppointmentCreate = () => {
             />
           </Grid>
 
+          {/* Thông tin sơ bộ */}
+          <Grid item xs={12} width="100%">
+            <TextField fullWidth label="Thông tin sơ bộ" name="note" multiline rows={4} value={formData.note} onChange={handleChange} />
+          </Grid>
+
           {/* Thời gian bắt đầu */}
           <Grid item xs={12} md={6} width="100%">
             <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={vi}>
@@ -160,6 +165,7 @@ const AppointmentCreate = () => {
                 value={formData.dateTime}
                 onChange={handleDateChange}
                 renderInput={(params) => <TextField {...params} fullWidth required />}
+                views={['year', 'month', 'day']}
               />
             </LocalizationProvider>
           </Grid>
@@ -192,18 +198,19 @@ const AppointmentCreate = () => {
                             value={item.time}
                             onChange={(newValue) => handlePropertyTimeChange(index, newValue)}
                             renderInput={(params) => <TextField {...params} fullWidth required />}
+                            views={['hours', 'minutes']}
                           />
                         </LocalizationProvider>
 
-                        {/* Trạng thái xác nhận */}
-                        {/* <FormControl fullWidth>
+                        {/* Trạng thái */}
+                        <FormControl>
                           <InputLabel>Trạng thái</InputLabel>
                           <Select value={item.status} onChange={(e) => handlePropertyStatusChange(index, e)} label="Trạng thái">
                             <MenuItem value="pending">Chờ xác nhận</MenuItem>
                             <MenuItem value="confirmed">Đã xác nhận</MenuItem>
                             <MenuItem value="rejected">Từ chối</MenuItem>
                           </Select>
-                        </FormControl> */}
+                        </FormControl>
                       </Stack>
                     </Stack>
                   </Paper>
@@ -222,9 +229,35 @@ const AppointmentCreate = () => {
             </Paper>
           </Grid>
 
-          {/* Ghi chú */}
+          {/* Phản hồi của khách hàng */}
           <Grid item xs={12} width="100%">
-            <TextField fullWidth label="Ghi chú" name="note" multiline rows={4} value={formData.note} onChange={handleChange} />
+            <TextField
+              fullWidth
+              label="Phản hồi của khách hàng"
+              name="customerFeedback"
+              multiline
+              rows={4}
+              value={formData.customerFeedback}
+              onChange={handleChange}
+            />
+          </Grid>
+
+          {/* Lời nhắn */}
+          <Grid item xs={12} width="100%">
+            <TextField fullWidth label="Lời nhắn" name="note" multiline rows={4} value={formData.note} onChange={handleChange} />
+          </Grid>
+
+          {/* Đánh giá cuộc hẹn */}
+          <Grid item xs={12} width="100%">
+            <TextField
+              fullWidth
+              label="Đánh giá cuộc hẹn"
+              name="rating"
+              value={formData.rating}
+              onChange={handleChange}
+              multiline
+              rows={4}
+            />
           </Grid>
 
           {/* Submit Button */}
